@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            pixelDensity(1);
+            noLoop();
+        }
+
+        function draw() {
+            loadPixels();
+            
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const maxDist = dist(0, 0, centerX, centerY);
+            
+            // Define center and edge colors (RGB values)
+            const centerColor = {r: 255, g: 0, b: 128};    // Pink
+            const edgeColor = {r: 0, g: 255, b: 255};      // Cyan
+            
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    const d = dist(x, y, centerX, centerY);
+                    const ratio = d / maxDist;  // How far we are from center (0 to 1)
+                    
+                    // Interpolate between center and edge colors
+                    const r = lerp(centerColor.r, edgeColor.r, ratio);
+                    const g = lerp(centerColor.g, edgeColor.g, ratio);
+                    const b = lerp(centerColor.b, edgeColor.b, ratio);
+                    
+                    const idx = (x + y * width) * 4;
+                    pixels[idx] = r;     // R
+                    pixels[idx + 1] = g; // G
+                    pixels[idx + 2] = b; // B
+                    pixels[idx + 3] = 255;  // A
+                }
+            }
+            
+            updatePixels();
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            draw();
+        }
+    </script>
+</body>
+</html>

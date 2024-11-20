@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            pixelDensity(1);
+            noLoop();
+        }
+
+        function draw() {
+            loadPixels();
+            
+            const centerX = width / 2;
+            const centerY = height / 2;
+            // Calculate max possible distance (corner to center)
+            const maxDist = dist(0, 0, centerX, centerY);
+            
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    // Calculate distance from current pixel to center
+                    const d = dist(x, y, centerX, centerY);
+                    // Map distance to grayscale value (0-255)
+                    // Invert so center is white and edges are dark
+                    const gray = map(d, 0, maxDist, 255, 0);
+                    
+                    // Calculate pixel array index
+                    const idx = (x + y * width) * 4;
+                    pixels[idx] = gray;     // R
+                    pixels[idx + 1] = gray; // G
+                    pixels[idx + 2] = gray; // B
+                    pixels[idx + 3] = 255;  // A
+                }
+            }
+            
+            updatePixels();
+        }
+
+        // Handle window resizing
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            draw();
+        }
+    </script>
+</body>
+</html>
