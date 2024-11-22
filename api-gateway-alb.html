@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AWS Architecture Diagram</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .diagram-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagram-container">
+        <h1>API Gateway to ALB</h1>
+        <div class="mermaid">
+            graph TB
+                client[Client] --> apigw[API Gateway]
+                
+                subgraph "VPC"
+                    subgraph "Private Subnet"
+                        alb[Application Load Balancer]
+                        vpce[VPC Endpoint]
+                        
+                        subgraph "ECS Cluster"
+                            service1[ECS Service 1]
+                            service2[ECS Service 2]
+                        end
+                    end
+                    
+                    apigw --> |PrivateLink| vpce
+                    vpce --> alb
+                    alb --> service1
+                    alb --> service2
+                end
+                
+                classDef aws fill:#2496ED,stroke:#232F3E,stroke-width:2px,color:white;
+                class apigw,alb,vpce,service1,service2 aws;
+                
+                classDef subnet fill:#f9f9f9,stroke:#666,stroke-width:1px;
+                class subnet subnet;
+        </div>
+    </div>
+    <script>
+        mermaid.initialize({ 
+            theme: 'default',
+            startOnLoad: true,
+            securityLevel: 'loose'
+        });
+    </script>
+</body>
+</html>
