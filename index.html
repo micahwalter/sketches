@@ -1,54 +1,305 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Gradient Examples</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A collection of creative coding sketches, tools, and experiments">
+    <meta name="author" content="Micah Walter">
+    <title>Sketches - Creative Coding Experiments</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        ul {
-            list-style-type: none;
+        * {
+            box-sizing: border-box;
+            margin: 0;
             padding: 0;
         }
-        li {
-            margin: 10px 0;
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+            padding: 20px;
         }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        #search {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            transition: border-color 0.2s;
+        }
+
+        #search:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        li:hover {
+            background-color: #f5f5f5;
+        }
+
+        li.hidden {
+            display: none;
+        }
+
         a {
             text-decoration: none;
             color: #007BFF;
+            font-weight: 500;
+            font-size: 1.1rem;
         }
+
         a:hover {
             text-decoration: underline;
+        }
+
+        .description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .no-results {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Gradient Examples</h1>
-    <ul>
-        <li><a href="color-distance-gradient">Color Distance Gradient</a></li>
-        <li><a href="distance-gradient">Distance Gradient</a></li>
-        <li><a href="inverse-distance-gradient">Inverse Distance Gradient</a></li>
-    </ul>
-    <h1>Test Patterns</h1>
-    <ul>
-        <li><a href="sine-pattern">Sinusoidal Test Pattern</a></li>
-    </ul>
-    <h1>Architecture Diagrams</h1>
-    <ul>
-        <li><a href="api-gateway-alb">API Gateway to ALB</a></li>
-    </ul>
-    <h1>Calculators</h1>
-    <ul>
-        <li><a href="growth-calculator">Growth Calculator</a></li>
-    </ul>
-    <h1>Animations</h1>
-    <ul>
-        <li><a href="aurora-animation">Aurora Animation</a></li>
-    </ul>
-    <h1>Tools</h1>
-    <ul>
-        <li><a href="electrical-panel-manager">Electrical Panel Manager</a></li>
-    </ul>
+    <div class="container">
+        <header>
+            <h1>Sketches</h1>
+            <p class="subtitle">Creative coding experiments and interactive tools</p>
+
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search sketches..."
+                    autocomplete="off"
+                >
+            </div>
+        </header>
+
+        <main>
+            <section data-category="gradient-examples">
+                <h2>Gradient Examples</h2>
+                <ul>
+                    <li data-title="Color Distance Gradient" data-description="Interactive gradient based on color distance calculations">
+                        <a href="color-distance-gradient.html">Color Distance Gradient</a>
+                        <div class="description">Interactive gradient based on color distance calculations</div>
+                    </li>
+                    <li data-title="Distance Gradient" data-description="Visualize gradients using distance-based algorithms">
+                        <a href="distance-gradient.html">Distance Gradient</a>
+                        <div class="description">Visualize gradients using distance-based algorithms</div>
+                    </li>
+                    <li data-title="Inverse Distance Gradient" data-description="Gradient effect with inverse distance weighting">
+                        <a href="inverse-distance-gradient.html">Inverse Distance Gradient</a>
+                        <div class="description">Gradient effect with inverse distance weighting</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-category="test-patterns">
+                <h2>Test Patterns</h2>
+                <ul>
+                    <li data-title="Sinusoidal Test Pattern" data-description="Generate customizable sine wave test patterns with adjustable frequency and amplitude">
+                        <a href="sine-pattern.html">Sinusoidal Test Pattern</a>
+                        <div class="description">Generate customizable sine wave test patterns with adjustable frequency and amplitude</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-category="architecture-diagrams">
+                <h2>Architecture Diagrams</h2>
+                <ul>
+                    <li data-title="API Gateway to ALB" data-description="Visualize AWS architecture connecting API Gateway to Application Load Balancer">
+                        <a href="api-gateway-alb.html">API Gateway to ALB</a>
+                        <div class="description">Visualize AWS architecture connecting API Gateway to Application Load Balancer</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-category="calculators">
+                <h2>Calculators</h2>
+                <ul>
+                    <li data-title="Growth Calculator" data-description="Calculate and visualize business growth projections over time">
+                        <a href="growth-calculator.html">Growth Calculator</a>
+                        <div class="description">Calculate and visualize business growth projections over time</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-category="animations">
+                <h2>Animations</h2>
+                <ul>
+                    <li data-title="Aurora Animation" data-description="Beautiful animated aurora borealis effect">
+                        <a href="aurora-animation.html">Aurora Animation</a>
+                        <div class="description">Beautiful animated aurora borealis effect</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section data-category="tools">
+                <h2>Tools</h2>
+                <ul>
+                    <li data-title="Electrical Panel Manager" data-description="Interactive tool to manage and visualize electrical circuit breaker panels">
+                        <a href="electrical-panel-manager.html">Electrical Panel Manager</a>
+                        <div class="description">Interactive tool to manage and visualize electrical circuit breaker panels</div>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="no-results" id="noResults">
+                No sketches match your search.
+            </div>
+        </main>
+
+        <footer>
+            <p>A collection of creative experiments by Micah Walter</p>
+        </footer>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const sections = document.querySelectorAll('section[data-category]');
+        const noResults = document.getElementById('noResults');
+        const allItems = document.querySelectorAll('li[data-title]');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+
+            if (searchTerm === '') {
+                // Show all items and sections
+                allItems.forEach(item => item.classList.remove('hidden'));
+                sections.forEach(section => section.style.display = 'block');
+                noResults.classList.remove('show');
+                return;
+            }
+
+            let hasResults = false;
+
+            sections.forEach(section => {
+                const items = section.querySelectorAll('li[data-title]');
+                let sectionHasVisible = false;
+
+                items.forEach(item => {
+                    const title = item.dataset.title.toLowerCase();
+                    const description = item.dataset.description.toLowerCase();
+                    const category = section.dataset.category.toLowerCase().replace(/-/g, ' ');
+
+                    if (title.includes(searchTerm) ||
+                        description.includes(searchTerm) ||
+                        category.includes(searchTerm)) {
+                        item.classList.remove('hidden');
+                        sectionHasVisible = true;
+                        hasResults = true;
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+
+                section.style.display = sectionHasVisible ? 'block' : 'none';
+            });
+
+            if (hasResults) {
+                noResults.classList.remove('show');
+            } else {
+                noResults.classList.add('show');
+            }
+        });
+    </script>
 </body>
 </html>
