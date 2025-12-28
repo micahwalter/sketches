@@ -16,7 +16,20 @@ This file contains workflow preferences and guidelines for working on this repos
 
 1. **README.md** - Add the new project to the documentation
 2. **index.html** (or index page) - Ensure the new project appears in the UI listing
-3. **Add standard footer** - Include the navigation footer in every project HTML file (see Footer Template below)
+3. **Add analytics tracking** - Include Fathom analytics code in the `<head>` section (see Analytics Template below)
+4. **Add standard footer** - Include the navigation footer in every project HTML file (see Footer Template below)
+
+## Analytics Template
+
+**CRITICAL: Every HTML page MUST include the Fathom analytics tracking code in the `<head>` section.**
+
+Insert this code in the `<head>` section after the `<title>` tag and before any `<style>` or other `<script>` tags:
+
+```html
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="BQSMBQKX" defer></script>
+    <!-- / Fathom -->
+```
 
 ## Footer Template
 
